@@ -56,7 +56,27 @@ export const datatypes = {
 
         let keyboard = "azerty";
 
-        
+        // voorbeeld van duck typing
+        type Person = {
+            name: string,
+            age: number,
 
+        }
+
+        // const persons: Person[] = 
+
+        let person1 : Person = {
+            name: "Jannes",
+            age: 12
+        }
+
+        let monitor = {
+            name:"dell",
+            age:3
+        }
+
+        person1 = monitor;
+        
+        
     }
 }
