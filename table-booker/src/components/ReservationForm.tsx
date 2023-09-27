@@ -28,6 +28,7 @@ function ReservationForm() {
     console.log('Time Slot:', selectedTimeSlot);
     // Add your API calls or storage logic here
 		setSelectedTimeSlot(null);
+		setSelectedDate(null);
   };
   return (
     <div className='max-w-sm mx-auto p-4 border border-gray-300 rounded bg-gray-200'>
