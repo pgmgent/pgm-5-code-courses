@@ -64,7 +64,7 @@ useEffect(() => {
         </button>
       </div>
       <div className="mt-4">
-				<label htmlFor="">Next timer</label>
+				<label htmlFor="next-timer">Next timer</label>
 				<br />
         <input
           type="number"
@@ -72,6 +72,7 @@ useEffect(() => {
           onChange={handleTimeChange}
           className="w-40 border rounded p-2 text-black"
           disabled={isRunning}
+          name='next-timer'
         />
       </div>
     </div>
