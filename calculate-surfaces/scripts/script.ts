@@ -1,4 +1,4 @@
-// Define interfaces for different shapes
+// Define type for different shapes
 type Rectangle = {
   type: "rectangle";
   length: number;
