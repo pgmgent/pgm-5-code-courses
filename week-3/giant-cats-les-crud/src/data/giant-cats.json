@@ -1,0 +1,102 @@
+[
+  {
+    "name": "African Lion",
+    "scientificName": "Panthera leo",
+    "habitat": "Savannah",
+    "description": "The African lion is a majestic creature known for its golden fur and distinct roar. It is native to the grasslands of Africa.",
+    "imageURL": "/images/african_lion.jpg"
+  },
+  {
+    "name": "Asian Lion",
+    "scientificName": "Panthera leo persica",
+    "habitat": "Gir Forest, India",
+    "description": "The Asian lion, also known as the Indian lion, is a critically endangered species. It has a smaller population and is found in the Gir Forest of India.",
+    "imageURL": "/images/asian_lion.jpg"
+  },
+  {
+    "name": "White Lion",
+    "scientificName": "Panthera leo krugeri",
+    "habitat": "Timbavati, South Africa",
+    "description": "The white lion is a rare color mutation of the African lion. It is known for its striking white fur and is considered sacred in some cultures.",
+    "imageURL": "/images/white_lion.jpg"
+  },
+  {
+    "name": "Barbary Lion",
+    "scientificName": "Panthera leo leo",
+    "habitat": "Atlas Mountains, North Africa",
+    "description": "The Barbary lion, also known as the Atlas lion, was native to North Africa but is now considered extinct in the wild. It was known for its thick mane.",
+    "imageURL": "/images/barbary_lion.jpg"
+  },
+  {
+    "name": "Mountain Lion",
+    "scientificName": "Puma concolor",
+    "habitat": "Various mountain regions",
+    "description": "The mountain lion, also known as the cougar or puma, is a large cat species found in various mountainous regions of North and South America.",
+    "imageURL": "/images/mountain_lion.jpg"
+  },
+  {
+    "name": "Siberian Tiger",
+    "scientificName": "Panthera tigris altaica",
+    "habitat": "Siberia, Russia",
+    "description": "The Siberian tiger is the largest of all tiger subspecies. It is native to the forests of Siberia and is known for its thick fur.",
+    "imageURL": "/images/siberian_tiger.jpg"
+  },
+  {
+    "name": "Bengal Tiger",
+    "scientificName": "Panthera tigris tigris",
+    "habitat": "Indian subcontinent",
+    "description": "The Bengal tiger is one of the most iconic tiger subspecies. It is found in various regions of the Indian subcontinent.",
+    "imageURL": "/images/bengal_tiger.jpg"
+  },
+  {
+    "name": "Sumatran Tiger",
+    "scientificName": "Panthera tigris sumatrae",
+    "habitat": "Sumatra, Indonesia",
+    "description": "The Sumatran tiger is the smallest of all tiger subspecies and is native to the island of Sumatra in Indonesia.",
+    "imageURL": "/images/sumatran_tiger.jpg"
+  },
+  {
+    "name": "Jaguar",
+    "scientificName": "Panthera onca",
+    "habitat": "Americas",
+    "description": "The jaguar is a large cat species native to the Americas. It is known for its powerful build and distinctive rosette patterns on its coat.",
+    "imageURL": "/images/jaguar.jpg"
+  },
+  {
+    "name": "Cheetah",
+    "scientificName": "Acinonyx jubatus",
+    "habitat": "Africa and parts of Iran",
+    "description": "The cheetah is the fastest land animal, capable of reaching speeds of up to 70 miles per hour. It is native to Africa and parts of Iran.",
+    "imageURL": "/images/cheetah.jpg"
+  },
+  {
+    "name": "frsfdsfds",
+    "scientificName": "vsvsdf",
+    "description": "fdsfdsfgdfgfdgdf",
+    "habitat": "dfsdfds",
+    "imageURL": ""
+  },
+  {
+    "name": "fdsfsd fsdfsdf",
+    "scientificName": "fsdgsdg ",
+    "description": "hjkhkjh",
+    "habitat": "kjkjkkj",
+    "imageURL": ""
+  },
+  {
+    "name": "fdsdfsd",
+    "scientificName": "fdsfds",
+    "description": "fsdfds",
+    "habitat": "fsdfdsfds",
+    "imageURL": "",
+    "id": "cdee3f10-03cc-4dc2-ab02-e9c875e13d19"
+  },
+  {
+    "name": "fdsdfsd",
+    "scientificName": "fdsfds",
+    "description": "fsdfds",
+    "habitat": "fsdfdsfds",
+    "imageURL": "",
+    "id": "9a4a30d5-7735-40a6-ba84-a73a3b3b9429"
+  }
+]
