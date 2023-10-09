@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "item": "Houten plank",
+    "voorraad": 10
+  },
+  {
+    "id": 2,
+    "item": "Lege glazen pot",
+    "voorraad": 20
+  },
+  {
+    "id": 3,
+    "item": "Houten balk",
+    "voorraad": 15
+  },
+  {
+    "id": 4,
+    "item": "Lege glazen fles",
+    "voorraad": 25
+  }
+]
