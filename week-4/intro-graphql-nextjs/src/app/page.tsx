@@ -7,7 +7,7 @@ export default function Home() {
       countries {
         code
         name
-				capital
+		capital
       }
     }
   `;
