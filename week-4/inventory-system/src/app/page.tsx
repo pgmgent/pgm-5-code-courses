@@ -11,13 +11,16 @@ export default function Home() {
 	const [newItem, setNewItem] = useState('');
 
   useEffect(() => {
+    setSortField('item');
+    setSortOrder('asc');
     // Sla de inventaris op in de lokale opslag bij elke wijziging
     localStorage.setItem('inventory', JSON.stringify(inventory));
   }, [inventory]);
 
-  const filteredData = inventory.filter((item : Product) =>
-    item.item.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredData = inventory.filter((item : Product) => {
+    if (searchTerm === '') return true;
+    return item.item.toLowerCase().includes(searchTerm.toLowerCase())
+});
 
   const sortedData = filteredData.sort((a , b) => {
     const order = sortOrder === 'asc' ? 1 : -1;

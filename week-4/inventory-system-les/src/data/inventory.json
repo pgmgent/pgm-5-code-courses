@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "item": "Fles",
+        "voorraad": 10
+    },
+    {
+        "id": 2,
+        "item": "Glas",
+        "voorraad": 12
+    },
+    {
+        "id": 3,
+        "item": "Bord",
+        "voorraad": 8
+    },
+    {
+        "id": 4,
+        "item": "Mes",
+        "voorraad": 6
+    },
+    {
+        "id": 5,
+        "item": "Vork",
+        "voorraad": 7
+    }
+]
