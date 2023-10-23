@@ -12,27 +12,28 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "title": {
       "type": "string"
-    },
-    "productID": {
-      "type": "uid"
     },
     "available": {
       "type": "boolean"
     },
     "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "address": {
       "type": "string"
+    },
+    "price": {
+      "type": "decimal"
     }
   }
 }

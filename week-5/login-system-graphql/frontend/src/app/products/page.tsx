@@ -1,31 +1,26 @@
-'use client'
 
-import { useEffect, useState } from 'react';
 import RentalProductCard from '@/components/RentalProductCard';
 import { fetchRentalProducts } from '../api/api';
+import CreateRentalProduct from '@/components/CreateRentalProduct';
 
 
-const RentalPage: React.FC = () => {
-  const [rentalProducts, setRentalProducts] = useState<RentalProduct[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchRentalProducts('products');
-      setRentalProducts(data);
-    };
-    fetchData();
-  }, []);
-
+const RentalPage: React.FC = async () => {
+	const rentalProductsData = await fetchRentalProducts('products');
+	console.log(rentalProductsData);
+	
   return (
     <div>
       <h1>Rental Products</h1>
-      {rentalProducts.map((product, index) => (
+			<CreateRentalProduct />
+
+      { rentalProductsData &&
+			rentalProductsData.map((product, index) => (
         <RentalProductCard
           key={index}
-          title={product.title}
-          available={product.available}
-          address={product.address}
-          price={product.price}
+          title={product.attributes.title}
+          available={product.attributes.available}
+          address={product.attributes.address}
+          price={product.attributes.price}
         />
       ))}
     </div>

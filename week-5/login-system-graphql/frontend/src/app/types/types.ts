@@ -3,4 +3,5 @@ interface RentalProduct {
     available: boolean;
     address: string;
     price: number;
+    image?: string;
   }
