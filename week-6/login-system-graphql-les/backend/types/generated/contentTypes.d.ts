@@ -368,9 +368,10 @@ export interface ApiRentalProductRentalProduct extends Schema.CollectionType {
     singularName: "rental-product";
     pluralName: "rental-products";
     displayName: "rentalProduct";
+    description: "";
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
@@ -378,7 +379,6 @@ export interface ApiRentalProductRentalProduct extends Schema.CollectionType {
     image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       "api::rental-product.rental-product",
       "oneToOne",
