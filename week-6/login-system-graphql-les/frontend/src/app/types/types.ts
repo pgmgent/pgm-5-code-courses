@@ -7,7 +7,7 @@ type RentalProductAttributes = {
       attributes: {
         url: string;
       }
-    }
+    }[]
   }
 }
 
