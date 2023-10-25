@@ -33,41 +33,19 @@ export const fetchRentalProducts = async () => {
 
 
 export const createRentalProduct = async (product: RentalProductAttributes) => {
-  // mutation {
-  //   createRentalProduct(data: { title: "Testobject", numberInStock: 0 }) {
-  //     data {
-  //       id
-  //       attributes {
-  //         title
-  //         numberInStock
-  //       }
-  //     }
-  //   }
-  // }
   const url = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
   const query = `
-    mutation {
-        createRentalProduct(
-          data: { 
-          title: "${product.title}", 
-        numberInStock: ${product.numberInStock}, 
-        image: { create: { url: "${product.image.data.attributes.url}" } } }) {
-          data {
-            id
-            attributes {
-              title
-              numberInStock
-              image { 
-                data {
-                  attributes{
-                     url
-                  }
-                }
-              }
-            }
-          }
+  mutation {
+    createRentalProduct(data: { title: "${product.title}", numberInStock: ${product.numberInStock} }) {
+      data {
+        id
+        attributes {
+          title
+          numberInStock
         }
-      }`;
+      }
+    }
+  }`;
       try {
         const response = await axios.post(url, { query });
         return response.data.data.createRentalProduct.data;

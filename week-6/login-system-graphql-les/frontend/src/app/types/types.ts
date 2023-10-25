@@ -2,7 +2,7 @@
 type RentalProductAttributes = {
   title: string;
   numberInStock: number;
-  image: {
+  image?: {
     data: {
       attributes: {
         url: string;
