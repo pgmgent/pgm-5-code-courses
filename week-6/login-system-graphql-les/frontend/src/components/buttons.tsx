@@ -18,7 +18,6 @@ export const RegisterButton = () => {
   return (
     <Link href="/register" className="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded mr-4">
         Register
-      
     </Link>
   );
 };
