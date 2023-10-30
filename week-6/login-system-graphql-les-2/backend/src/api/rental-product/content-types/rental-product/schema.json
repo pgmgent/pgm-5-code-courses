@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rental_products",
+  "info": {
+    "singularName": "rental-product",
+    "pluralName": "rental-products",
+    "displayName": "rentalProduct",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "numberInStock": {
+      "type": "integer",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
