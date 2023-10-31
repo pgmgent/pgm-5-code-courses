@@ -7,6 +7,7 @@ import { Item } from "@/types/types";
 import { ADD_ITEM } from "@/libs/mutations";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { Session } from "inspector";
 
 const AddItemForm = ({
   handleOnItemAdded,
@@ -18,7 +19,7 @@ const AddItemForm = ({
     onUnauthenticated() {
       redirect("/api/auth/signin?callbackUrl=/client");
     },
-  });
+  }) ;
   const [name, setName] = useState("");
   const [mutateFunction, { data, loading, error }] = useMutation(ADD_ITEM, {
     context: {
