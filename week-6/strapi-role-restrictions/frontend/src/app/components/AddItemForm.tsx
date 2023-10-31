@@ -14,12 +14,7 @@ const AddItemForm = ({
 }: {
   handleOnItemAdded: () => {};
 }) => {
-  const { data: session } = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect("/api/auth/signin?callbackUrl=/client");
-    },
-  }) ;
+  const { data: session } = useSession() ;
   const [name, setName] = useState("");
   const [mutateFunction, { data, loading, error }] = useMutation(ADD_ITEM, {
     context: {
