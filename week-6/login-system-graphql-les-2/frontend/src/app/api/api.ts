@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export const fetchRentalProducts = async () => {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
-    const query = `
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
+  const query = `
     query {
         rentalProducts {
           data {
@@ -22,18 +22,26 @@ export const fetchRentalProducts = async () => {
         }
       }`;
 
-      try {
-        const response = await axios.post(url, { query });
-        return response.data.data.rentalProducts.data;
-      } catch(error) {
-        console.log(error);
-        return null;
-      }
-    }
+  try {
+    const response = await axios.post(url, { query });
+    return response.data.data.rentalProducts.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
 
-export const createRentalProduct = async ({title, numberInStock, image} : { title: string, numberInStock: string, image: string}) => {
+export const createRentalProduct = async ({
+  title,
+  numberInStock,
+  image,
+}: {
+  title: string;
+  numberInStock: string;
+  image: string;
+}) => {
   const url = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
-  console.log("CREATED")
+  console.log("CREATED");
   // const query = `
   // mutation {
   //   createRentalProduct(
@@ -70,13 +78,13 @@ export const createRentalProduct = async ({title, numberInStock, image} : { titl
       }
     }
   }
-  `;  
+  `;
 
   try {
     const response = await axios.post(url, { query });
     return response.data.data.createRentalProduct.rentalProduct;
-  } catch(error) {
+  } catch (error) {
     console.log(error);
     return null;
   }
-}
+};
