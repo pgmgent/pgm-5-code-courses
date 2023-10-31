@@ -368,15 +368,15 @@ export interface ApiItemItem extends Schema.CollectionType {
     singularName: "item";
     pluralName: "items";
     displayName: "Item";
+    description: "";
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<"api::item.item", "oneToOne", "admin::user"> &
       Attribute.Private;
     updatedBy: Attribute.Relation<"api::item.item", "oneToOne", "admin::user"> &

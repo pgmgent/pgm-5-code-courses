@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { SessionProvider } from "next-auth/react"
 import { NextAuthProvider } from '@/provider/AuthProvider';
+import Navbar from './components/Navbar';
 
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={''}>
+      <Navbar />
       <NextAuthProvider>{children}
       </NextAuthProvider></body>
     </html>

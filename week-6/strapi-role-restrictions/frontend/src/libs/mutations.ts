@@ -5,6 +5,8 @@ export const LOGIN_MUTATION = gql`
     login(input: { identifier: $identifier, password: $password }) {
       user {
         id
+        username
+        email
       }
       jwt
     }
@@ -36,3 +38,17 @@ mutation RegisterUser($username: String!, $email: String!, $password: String!) {
 //   }
 // }
 // `;
+
+export const ADD_ITEM = gql`
+mutation addItem($name: String!) {
+  createItem(data: { name: $name }) {
+    data {
+      id
+      attributes {
+        name
+      }
+    }
+  }
+}
+
+`;

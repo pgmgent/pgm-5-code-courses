@@ -1,9 +1,10 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import type { NextAuthOptions } from "next-auth";
+import type { NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google"; // Import GoogleProvider
 import { LOGIN_MUTATION } from "./mutations";
+import { client } from "./apollo";
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -31,8 +32,8 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
         try {
-          console.log("credentials", credentials)
-          const { data } = await apolloClient.mutate({
+          // console.log("credentials", credentials);
+          const { data } = await client.mutate({
             mutation: LOGIN_MUTATION,
             variables: {
               identifier: credentials.email,
@@ -40,6 +41,7 @@ export const authOptions: NextAuthOptions = {
             },
           });
 
+          // sessionStorage.set("jwt", data.login.jwt);
           const { user, jwt } = data.login;
           return { ...user, jwt };
         } catch (error) {
@@ -48,48 +50,51 @@ export const authOptions: NextAuthOptions = {
         }
       },
     }),
-    
-
   ],
+  session: {
+    strategy: "jwt",
+  },
   callbacks: {
     async session({ session, token }) {
-      session.user = token;
-      return Promise.resolve(session);
+      // console.log("session", token);
+      session = {...token, ...session};
+      return session;
     },
     async jwt({ token, user, account }) {
+
       const isSignIn = user ? true : false;
       if (isSignIn && account?.provider === "credentials") {
-        console.log(token, user, account)
-        token.id = user.id;
-        token.name = user.email;
+        token = {...user, ...token};
         console.log("User logged in");
       }
-      return Promise.resolve(token);
+      
+      return token;
     },
   },
   // ... other configurations
 };
 
 // Create an Apollo Client instance
-const httpLink = createHttpLink({
-  uri: process.env.NEXT_PUBLIC_API_URL + '/graphql', // Set your GraphQL server URI here
-});
+// const httpLink = createHttpLink({
+//   uri: process.env.NEXT_PUBLIC_API_URL + "/graphql", // Set your GraphQL server URI here
+// });
 
-const authLink = setContext((_, { headers }) => {
-  // You need to implement token retrieval from the session or cookie here.
-  const token = ''; // Implement token retrieval logic here.
+// const authLink = setContext((_, { headers }) => {
+//   // You need to implement token retrieval from the session or cookie here.
+//   const token = localStorage.getItem("jwt");
 
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
+//   return {
+//     headers: {
+//       ...headers,
+//       authorization: token ? `Bearer ${token}` : "",
+//     },
+//   };
+// });
 
-const apolloClient = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
+// const apolloClient = new ApolloClient({
+//   link: authLink.concat(httpLink),
+//   cache: new InMemoryCache(),
+// });
 
-export default apolloClient;
+// export default apolloClient;
+

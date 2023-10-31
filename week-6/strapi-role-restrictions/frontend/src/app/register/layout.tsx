@@ -3,6 +3,7 @@
 import { NextAuthProvider } from '@/provider/AuthProvider';
 import { ApolloProvider } from '@apollo/client';
 import { client } from '@/libs/apollo';
+import Navbar from '../components/Navbar';
 
 
 

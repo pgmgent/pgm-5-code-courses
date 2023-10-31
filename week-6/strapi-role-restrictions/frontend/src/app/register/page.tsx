@@ -1,8 +1,7 @@
 "use client"
-import { ApolloProvider, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { useState } from 'react'
 import { REGISTER_USER } from '../../libs/mutations';
-import { client } from '@/libs/apollo';
 
 const RegisterPage = () => {
     const [formData, setFormData] = useState({
