@@ -1,4 +1,4 @@
-import { authOptions } from '@/libs/authOptions';
+import { authOptions } from '@/lib/authOptions';
 import { get } from 'http'
 import { getServerSession } from 'next-auth';
 import Image from 'next/image'

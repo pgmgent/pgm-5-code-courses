@@ -1,7 +1,7 @@
 "use client"
 import { NextAuthProvider } from '@/provider/AuthProvider';
 import { ApolloProvider } from '@apollo/client';
-import { client } from '@/libs/apolloClient';
+import { client } from '@/lib/apolloClient';
 
 
 

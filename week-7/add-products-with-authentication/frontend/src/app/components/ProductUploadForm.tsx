@@ -3,7 +3,7 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 // import JSONPretty from "react-json-pretty";
-import { CREATE_PRODUCT_MUTATION, UPLOAD_MEDIA_MUTATION } from "@/libs/mutations/products";
+import { CREATE_PRODUCT_MUTATION, UPLOAD_MEDIA_MUTATION } from "@/lib/mutations/products";
 
 const ProductUploadForm = ({userId}: {userId:string}) => {
   const [uploadMediaMutation, uploadMediaState] = useMutation(
@@ -44,13 +44,6 @@ const ProductUploadForm = ({userId}: {userId:string}) => {
   const addProduct = async () => {
     if (selectedFile) {
       const id = await uploadMedia(selectedFile);
-      const variables = {
-        "productId": id,
-        "userId": user,
-        "imageName": name,
-        "availability": availability,
-      };
-      console.log("variables", variables)
       try {
         await createProduct({
           variables: {

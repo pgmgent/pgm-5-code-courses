@@ -3,13 +3,30 @@ import { gql } from "@apollo/client";
 export const GET_PRODUCTS = gql`
   query GetProducts {
     products {
+    data {
       id
-      image {
-        id
-        userId
+      attributes {
+        amountAvailable
+        image {
+          data {
+            id
+            attributes {
+              url
+            }
+          }
+        }
+        name
+        users_permissions_user {
+          data {
+            id
+            attributes {
+                username
+              }
+          }
+        }
       }
-      name
     }
+  }
   }
 `;
 // change permissions in strapi users (find, findOne)
@@ -20,9 +37,13 @@ export const GET_PRODUCTS_FOR_USER = gql`
         attributes {
           name
           available
+          amountAvailable
           users_permissions_user {
             data {
               id
+              attributes {
+                username
+              }
             }
           }
           image {

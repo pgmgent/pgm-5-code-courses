@@ -368,6 +368,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     singularName: "product";
     pluralName: "products";
     displayName: "Product";
+    description: "";
   };
   options: {
     draftAndPublish: false;
@@ -381,6 +382,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
       "manyToOne",
       "plugin::users-permissions.user"
     >;
+    amountAvailable: Attribute.Integer & Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -391,6 +393,49 @@ export interface ApiProductProduct extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       "api::product.product",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRequestRequest extends Schema.CollectionType {
+  collectionName: "requests";
+  info: {
+    singularName: "request";
+    pluralName: "requests";
+    displayName: "Request";
+    description: "";
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    product: Attribute.Relation<
+      "api::request.request",
+      "oneToOne",
+      "api::product.product"
+    >;
+    hirer: Attribute.Relation<
+      "api::request.request",
+      "oneToOne",
+      "plugin::users-permissions.user"
+    >;
+    startDate: Attribute.DateTime;
+    endDate: Attribute.DateTime;
+    status: Attribute.Enumeration<["pending ", "accepted", "declined"]>;
+    amountRequested: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "api::request.request",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "api::request.request",
       "oneToOne",
       "admin::user"
     > &
@@ -729,6 +774,7 @@ declare module "@strapi/types" {
       "admin::transfer-token": AdminTransferToken;
       "admin::transfer-token-permission": AdminTransferTokenPermission;
       "api::product.product": ApiProductProduct;
+      "api::request.request": ApiRequestRequest;
       "plugin::upload.file": PluginUploadFile;
       "plugin::upload.folder": PluginUploadFolder;
       "plugin::i18n.locale": PluginI18NLocale;
