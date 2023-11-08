@@ -1,6 +1,6 @@
-import { getClient } from "@/libs/apolloServerClient";
+import { getClient } from "@/lib/apolloServerClient";
 
-import { GET_REQUESTS } from "@/libs/queries/requests";
+import { GET_REQUESTS } from "@/lib/queries/requests";
 import RequestList from "../components/RequestList";
 
 const Page = async () => {
@@ -8,13 +8,13 @@ const Page = async () => {
     query: GET_REQUESTS,
     context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 0 },
       },
     },
     variables: {
       filters: {
         product: {
-          users_permissions_user: {
+          owner: {
             id: {
               eq: 1,
             },
@@ -23,6 +23,7 @@ const Page = async () => {
       },
     },
   });
+
   return (
     <>
     <RequestList requests={data.requests.data} />

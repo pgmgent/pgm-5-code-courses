@@ -1,6 +1,6 @@
 "use client"
 import { ApolloProvider } from '@apollo/client'
-import { client } from '@/libs/apolloClient'
+import { client } from '@/lib/apolloClient'
 
 
 export default function Layout({ children }: { children: React.ReactNode }) {

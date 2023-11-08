@@ -21,7 +21,7 @@ export default async function Navbar() {
           </li>
         )}
         <li>
-          <Link href="/server">Server</Link>
+          <Link href="/requests">Requests</Link>
         </li>
         <li>
           <Link href="/products">Products</Link>

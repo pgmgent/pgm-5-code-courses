@@ -4,13 +4,14 @@ type Product = {
     image: {
       data: {
         attributes: {
+          id: string;
           name: string;
           url: string;
         };
       };
     };
       amountAvailable: number;
-      users_permissions_user: {
+      owner: {
         data: {
           id: string;
           attributes: {

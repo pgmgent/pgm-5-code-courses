@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useMutation, useQuery } from "@apollo/client";
-import { GET_PRODUCTS, GET_PRODUCTS_FOR_USER } from "@/libs/queries/products";
-import { CREATE_REQUEST } from "@/libs/mutations/request";
+import { GET_PRODUCTS, GET_PRODUCTS_FOR_USER } from "@/lib/queries/products";
+import { CREATE_REQUEST } from "@/lib/mutations/request";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
@@ -27,7 +27,6 @@ const page = () => {
     const product = data.products.data.find(
       (product: Product) => product.id === id
     );
-    console.log(product);
     const amountAvailable = product.attributes.amountAvailable;
     const requestedAmount =
       amountToRequest > amountAvailable ? amountAvailable : amountToRequest;
@@ -82,7 +81,7 @@ const page = () => {
               <p className="text-gray-700 mb-2">
                 Renter ID:{" "}
                 {
-                  product.attributes.users_permissions_user.data.attributes
+                  product.attributes.owner.data.attributes
                     .username
                 }
               </p>

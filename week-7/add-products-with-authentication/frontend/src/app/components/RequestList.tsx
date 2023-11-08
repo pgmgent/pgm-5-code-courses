@@ -1,63 +1,88 @@
 "use client";
-import { UPDATE_REQUEST_STATUS } from "@/lib/mutations/request";
-import { Request } from "@/types/Request";
-import { useMutation } from "@apollo/client";
+import { RequestItem } from "@/types/RequestItem";
+import RequestListItem from "./RequestListItem";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "@/lib/apolloClient";
+import { useState } from "react";
 
-type Answer = "Accepted" | "Declined";
-const RequestList = ({ requests } : {requests : Request[]}) => {
-    const [updateRequest, { loading, error }] = useMutation(UPDATE_REQUEST_STATUS);
+const RequestList = ({ requests }: { requests: RequestItem[]}, ) => {
+  const [showPending, setShowPending] = useState(true);
+  const [showAccepted, setShowAccepted] = useState(true);
+  const [showDeclined, setShowDeclined] = useState(true);
+  const [requestsToShow, setRequestsToShow] = useState(requests);
 
-    const handleAcceptOrDecline = (request: Request, answer : Answer) => {
-      updateRequest({
-        variables: {
-          id: request.id,
-          status: answer,
-        },
-      });
-      for (let i = 0; i < requests.length; i++) {
-        if (requests[i].id === request.id) {
-          requests[i].attributes.status = answer;
-        }
-      }
-    };
-    return (
-        <div className="p-4">
-        <h1 className="text-2xl font-bold mb-4">Request List</h1>
-        <ul className="grid gap-4">
-          {requests.filter(request => request.attributes.status == "pending").map((request) => (
-            <li key={request.id} className="bg-white border rounded-lg p-4 shadow-lg">
-              <div className="font-bold text-lg mb-2">
-                {request.attributes.hirer.data.attributes.username}
-              </div>
-              <div className="mb-2">
-                <span className="font-semibold">Product:</span> {request.attributes.product.data.attributes.name}
-              </div>
-              <div className="mb-2">
-                <span className="font-semibold">Amount:</span> {request.attributes.amountRequested}
-              </div>
-              <div className="mb-2">
-                <span className="font-semibold">Status:</span> {request.attributes.status}
-              </div>
-              <div className="flex space-x-4">
-                <button
-                  className="btn btn-accept"
-                  onClick={() => handleAcceptOrDecline(request, "Accepted")}
-                >
-                  Accept
-                </button>
-                <button
-                  className="btn btn-decline"
-                  onClick={() => handleAcceptOrDecline(request, "Declined")}
-                >
-                  Decline
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+  const toggleSection = (section: string) => {
+    switch (section) {
+      case "pending":
+        setShowPending(!showPending);
+        break;
+      case "accepted":
+        setShowAccepted(!showAccepted);
+        break;
+      case "declined":
+        setShowDeclined(!showDeclined);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleUpdateRequest = (request: RequestItem) => {
+    const updatedRequests = requestsToShow.map((r) =>
+      r.id === request.id ? request : r
     );
+    setRequestsToShow(updatedRequests);
+  };
+
+  return (
+    <ApolloProvider client={client}>
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Request List</h1>
+      <div className="mb-4">
+        <button className="mb-2" onClick={() => toggleSection("pending")}>
+          Toggle Pending Requests
+        </button>
+        {showPending && (
+          <ul className="grid grid-cols-1 gap-4">
+            {requests
+              .filter((request) => request.attributes.status === "pending")
+              .map((request) => (
+                <RequestListItem key={request.id} request={request} handleUpdateRequest={handleUpdateRequest} />
+              ))}
+          </ul>
+        )}
+      </div>
+      <div className="mb-4">
+        <button className="mb-2" onClick={() => toggleSection("accepted")}>
+          Toggle Accepted Requests
+        </button>
+        {showAccepted && (
+          <ul className="grid grid-cols-1 gap-4">
+            {requests
+              .filter((request) => request.attributes.status === "accepted")
+              .map((request) => (
+                <RequestListItem key={request.id} request={request}  handleUpdateRequest={handleUpdateRequest}/>
+              ))}
+          </ul>
+        )}
+      </div>
+      <div>
+        <button className="mb-2" onClick={() => toggleSection("declined")}>
+          Toggle Declined Requests
+        </button>
+        {showDeclined && (
+          <ul className="grid grid-cols-1 gap-4">
+            {requests
+              .filter((request) => request.attributes.status === "declined")
+              .map((request) => (
+                <RequestListItem key={request.id} request={request} handleUpdateRequest={handleUpdateRequest}/>
+              ))}
+          </ul>
+        )}
+      </div>
+    </div>
+    </ApolloProvider>
+  );
 };
 
 export default RequestList;
-  

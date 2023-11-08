@@ -19,7 +19,6 @@ export const CREATE_REQUEST = gql`
   }
 `;
 
-
 export const DELETE_REQUEST = gql`
   mutation Mutation($id: ID!) {
     deleteRequest(id: $id) {
@@ -40,12 +39,13 @@ export const DELETE_REQUEST = gql`
 `;
 
 export const UPDATE_REQUEST_STATUS = gql`
-mutation Mutation($updateRequestId: ID!, $data: RequestInput!) {
-  updateRequest(id: $updateRequestId, data: $data) {
-    data {
-      attributes {
-        status
+  mutation Mutation($updateRequestId: ID!, $data: RequestInput!) {
+    updateRequest(id: $updateRequestId, data: $data) {
+      data {
+        attributes {
+          status
+        }
       }
     }
   }
-}`;
+`;

@@ -16,7 +16,7 @@ export const GET_PRODUCTS = gql`
           }
         }
         name
-        users_permissions_user {
+        owner {
           data {
             id
             attributes {
@@ -32,13 +32,13 @@ export const GET_PRODUCTS = gql`
 // change permissions in strapi users (find, findOne)
 export const GET_PRODUCTS_FOR_USER = gql`
   query GetProducts($userId: ID!) {
-    products(filters: { users_permissions_user: { id: { eq: $userId } } }) {
+    products(filters: { owner: { id: { eq: $userId } } }) {
       data {
         attributes {
           name
           available
           amountAvailable
-          users_permissions_user {
+          owner {
             data {
               id
               attributes {

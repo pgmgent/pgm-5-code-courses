@@ -12,7 +12,7 @@ export const UPLOAD_MEDIA_MUTATION = gql`
 
 export const CREATE_PRODUCT_MUTATION = gql`
  mutation ($imageId: ID!, $productName: String!, $available: Boolean!, $userId: ID!) {
-    createProduct(data: { image: $imageId, name: $productName, available: $available, users_permissions_user: $userId }) {
+    createProduct(data: { image: $imageId, name: $productName, available: $available, owner: $userId }) {
       data {
         id
         attributes {

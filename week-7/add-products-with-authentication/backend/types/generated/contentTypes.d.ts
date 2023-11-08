@@ -377,7 +377,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     name: Attribute.String;
     image: Attribute.Media;
     available: Attribute.Boolean;
-    users_permissions_user: Attribute.Relation<
+    owner: Attribute.Relation<
       "api::product.product",
       "manyToOne",
       "plugin::users-permissions.user"

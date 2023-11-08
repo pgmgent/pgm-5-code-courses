@@ -1,4 +1,4 @@
-export type Request = {
+export type RequestItem = {
   id: string;
   attributes: {
     amountRequested: number;
