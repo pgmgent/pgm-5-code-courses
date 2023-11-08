@@ -376,7 +376,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     image: Attribute.Media;
-    available: Attribute.Boolean;
+    availableForRental: Attribute.Boolean;
     owner: Attribute.Relation<
       "api::product.product",
       "manyToOne",
