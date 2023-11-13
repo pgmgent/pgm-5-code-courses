@@ -8,12 +8,11 @@ import { client } from '@/lib/apolloClient';
 
 type Props = {
   children: React.ReactNode;
-  session: any;
 };
 
 
 export default function RootLayout({
-  children, session,
+  children,
 }: 
   Props
 ) {
