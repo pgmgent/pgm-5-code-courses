@@ -37,8 +37,7 @@ export const authOptions: NextAuthOptions = {
               password: credentials.password,
             },
           });
-          console.log("data", data)
-          // sessionStorage.set("jwt", data.login.jwt);
+          // console.log("data", data)
           const { user, jwt } = data.login;
           return { ...user, jwt };
         } catch (error) {
@@ -53,7 +52,6 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async session({ session, token }) {
-      // console.log("session", token);
       session = {...token, ...session};
       return session;
     },
@@ -68,30 +66,5 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
   },
-  // ... other configurations
 };
-
-// Create an Apollo Client instance
-// const httpLink = createHttpLink({
-//   uri: process.env.NEXT_PUBLIC_API_URL + "/graphql", // Set your GraphQL server URI here
-// });
-
-// const authLink = setContext((_, { headers }) => {
-//   // You need to implement token retrieval from the session or cookie here.
-//   const token = localStorage.getItem("jwt");
-
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : "",
-//     },
-//   };
-// });
-
-// const apolloClient = new ApolloClient({
-//   link: authLink.concat(httpLink),
-//   cache: new InMemoryCache(),
-// });
-
-// export default apolloClient;
 

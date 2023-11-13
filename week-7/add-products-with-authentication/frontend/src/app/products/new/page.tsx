@@ -1,6 +1,6 @@
 "use client";
 import { ApolloProvider } from "@apollo/client";
-import { client } from "@/libs/apolloClient";
+import { client } from "@/lib/apolloClient";
 import ProductUploadForm from "../../components/ProductUploadForm";
 import { useSession } from "next-auth/react";
 

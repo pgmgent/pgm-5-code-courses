@@ -1,7 +1,7 @@
 "use client"
 import { useMutation } from '@apollo/client';
 import { useState } from 'react'
-import { REGISTER_USER } from '@/libs/mutations/login'
+import { REGISTER_USER } from '@/lib/mutations/login'
 import { useRouter } from 'next/navigation';
   
 

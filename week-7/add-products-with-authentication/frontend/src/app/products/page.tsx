@@ -9,9 +9,9 @@ import Image from "next/image";
 import { useState } from "react";
 const page = () => {
   const session = useSession();
-  console.log(session);
-  const { data, loading, error } = useQuery(GET_PRODUCTS);
-  const [amountToRequest, setAmountToRequest] = useState(0);
+  // console.log("session", session);
+  const { data, loading, error } = useQuery(GET_PRODUCTS)  
+	const [amountToRequest, setAmountToRequest] = useState(0);
   const [createRequest] = useMutation(CREATE_REQUEST);
 
   if (!session) return null;
@@ -47,7 +47,13 @@ const page = () => {
     });
   };
 
-  const imageUrl = "";
+	if(!data.products) return (
+		<>
+			<p>No data available</p>
+			
+		</>
+	);
+
   return (
     <>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -79,11 +85,12 @@ const page = () => {
                 Amount Available: {product.attributes.amountAvailable}
               </p>
               <p className="text-gray-700 mb-2">
-                Renter ID:{" "}
+								{/* TODO: add */}
+                {/* Renter ID:{" "}
                 {
                   product.attributes.owner.data.attributes
                     .username
-                }
+                } */}
               </p>
               {product.attributes.amountAvailable > 0 ? (
                 <div className="flex items-center justify-between">
